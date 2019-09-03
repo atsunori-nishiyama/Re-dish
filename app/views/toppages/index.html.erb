@@ -1,6 +1,14 @@
 <% if logged_in? %>
 
-<p>ログイン完了ユーザー:<%= current_user.name %></p>
+<div class="row">
+    
+
+    <div class="col-sm-8">
+        <%= render 'dishes/dishes', dishes: @dishes %>
+        
+    </div>
+</div>
+<%= link_to 'ご飯を投稿する', new_dish_path %>
 
 <% else %>
 

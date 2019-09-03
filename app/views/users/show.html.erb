@@ -9,14 +9,17 @@
             <div class="card-body">
                 <img class="mr-2 rounded-circle p-3" style="width: 100px;height: 100px;">
             </div>
+                <%= link_to '画像を変更する', edit_user_path %>
         </div>
     </aside>
     <div class="clo-sm-8">
         <ul class="nav nav-tabs nav-jutifield mb-3">
-            <li class="nav-item"><a href="#" class="nav-link">投稿</a></li>
+            <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿 <span class="badge badge-secondary"><%= @count_dishes %></span></a></li>
             <li class="nav-item"><a href="#" class="nav-link">フォロー中</a></li>
             <li class="nav-item"><a href="#" class="nav-link">フォロワー</a></li>
             <li class="nav-item"><a href="#" class="nav-link">好物</a></li>
-        </ul>
+        </ul
+        <%= render 'dishes/dishes', dishes: @dishes %>
+        
     </div>
 </div>

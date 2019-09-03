@@ -1,0 +1,14 @@
+<% if logged_in? %>
+<h2>写真を選択してください</h2>
+<%= form_with(model: @dish, local: true) do |f| %>
+<span class="picture">
+    <%= f.file_field :picture %>
+</span>
+<div>
+<%= f.label :content, 'コメント内容' %>
+<%= f.text_area :content, class: 'form-control', row: 5  %>
+<%= f.submit '投稿する' %>
+</div>
+<% end %>
+<%= link_to '一覧に戻る', root_url %>
+<% end %>
