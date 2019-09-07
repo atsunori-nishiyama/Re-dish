@@ -28,4 +28,8 @@ class User < ApplicationRecord
     self.followings.include?(oter_user)
   end
   
+  def feed_dishes
+    Dish.where(user_id: self.following_ids + [self.id])
+  end
+  
 end

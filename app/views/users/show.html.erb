@@ -7,11 +7,10 @@
                 </h3>
             </div>
             <div class="card-body">
-                <% if @user.image? %>
+                
                 <img class="mr-2 rounded-circle" src="<%= @user.image.thumb100 %>" alt="">
-                <% else %>
-                <%= current_user.image.thumb100.url %>
-                <% end %>
+                
+                
             </div>
                 <%= link_to '画像を変更する', edit_user_path %>
         </div>

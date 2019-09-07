@@ -13,7 +13,7 @@ class DishesController < ApplicationController
       flash[:success] = '投稿しました'
       redirect_to root_url
     else
-      @dishes = current_user.dishes.order(id: :desc).page(params[:page])
+      @dishes = current_user.feed_dishes.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿できませんでした'
       render 'toppages/index'
     end
