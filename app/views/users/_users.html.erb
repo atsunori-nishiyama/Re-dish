@@ -2,8 +2,14 @@
 <ul class="list-unstyled">
     <% users.each do |user| %>
     <li class="media">
-       <img class="mr-2 rounded-circle p-3" style="width: 100px;height: 100px;">
        <div class="media-body">
+           <div>
+               <% if current_user.image? %>
+               <img class="mr-2 rounded-circle" src="<%= user.image.thumb100 %>" alt="">
+               <% else %>
+                <%= current_user.image.thumb100.url %>
+                <% end %>
+           </div>
            <div>
                <%= user.name %>
            </div>

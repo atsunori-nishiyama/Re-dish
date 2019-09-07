@@ -2,7 +2,7 @@
     <% dishes.each do |dish| %>
     
     <li class="media mb-3">
-       <img class="mr-2 rounded-circle p-3" style="width: 100px;height: 100px;">
+       <img class="mr-2 rounded-circle" src="<%= dish.user.image.thumb100 %>" alt="">
         <div class="media-body">
             <div>
                 <%= link_to dish.user.name, user_path(dish.user) %>

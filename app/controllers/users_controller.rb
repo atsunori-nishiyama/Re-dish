@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
+  
   
   
   def index
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user.image.cache! unless @user.image.blank?
   end
 
   def update
@@ -46,6 +48,18 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page]).per(7)
+    counts(@user)
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page]).per(7)
+    counts(@user)
+  end
 
   def destroy
   end
@@ -56,4 +70,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
+  
+  
 end

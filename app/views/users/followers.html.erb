@@ -1,0 +1,29 @@
+<div class="row">
+    <aside class="clo-sm-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <%= @user.name %>
+                </h3>
+            </div>    
+            <div class="card-body">
+                <img class="mr-2 rounded-circle" src="<%= @user.image.thumb100 %>" alt="">
+            </div>
+        </div>    
+            <%= render 'relationships/follow_button', user: @user %>
+    </aside>
+    <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justifield mb-3">
+            <li class="nav-item">
+                <a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿 <span class="badge badge-secondary"><%= @count_redishes %></span></a>
+            </li>
+            <li class="nav-item">
+                <a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー中 <span class="badge badge-secondary"><%= @count_followings %></span></a>
+            </li>
+            <li class="nav-item">
+                <a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー <span class="badge badge-secondary"><%= @count_followers %></span></a>
+            </li>
+        </ul>
+        <%= render 'users', users: @followers %>
+    </div>
+</div>
