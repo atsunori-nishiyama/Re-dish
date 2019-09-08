@@ -13,11 +13,19 @@
                 <%= image_tag dish.picture.url if dish.picture? %>
                 <%= simple_format(dish.content) %></p>
             </div>
-            <div>
-                <% if current_user == dish.user %>
-                <%= link_to "削除", dish, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-                <% end %>
+            <div class="cotainer">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <% if current_user == dish.user %>
+                        <%= link_to "削除", dish, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                        <% end %>
+                    </div>
+                    <div class="offset-sm-1 col-sm-4">
+                        <%= render 'favorites/like_button', dish: dish %>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </li>
     <% end %>

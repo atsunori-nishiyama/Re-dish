@@ -32,4 +32,20 @@ class User < ApplicationRecord
     Dish.where(user_id: self.following_ids + [self.id])
   end
   
+  has_many :favorites
+  has_many :favposts, through: :favorites, source: :dish
+  
+  def like(dish)
+    favorites.find_or_create_by(dish_id: dish.id)
+  end
+
+  def unlike(dish)
+    favorite = favorites.find_by(dish_id: dish.id)
+    favorite.destroy if favorite
+  end
+  
+  def favpost?(dish)
+    self.favposts.include?(dish)
+  end
+  
 end

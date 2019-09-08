@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers]
+  before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
   
   
   
@@ -62,6 +62,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @favposts = @user.favposts.page(params[:page]).per(7)
+    counts(@user)
   end
 
   
