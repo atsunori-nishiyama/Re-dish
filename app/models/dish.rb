@@ -7,4 +7,12 @@ class Dish < ApplicationRecord
   
   has_many :favorites, foreign_key: 'dish_id', dependent: :destroy
   has_many :users, through: :favorites
+  
+  def self.search(search)
+    if search
+      Dish.where(['content LIKE ?', "%#{search}%"])
+    else
+      Dish.all
+    end
+  end
 end

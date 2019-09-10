@@ -1,0 +1,28 @@
+<%= form_tag(search_path, :method => 'get') do %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :content => nill %>
+<% end %>
+
+<ul>
+    <% @dishes.each do |dish| %>
+    <li>
+        
+    </li>
+</ul>
+
+
+<!--<%= search_form_for @q do |f| %>-->
+<!--<%= f.label :content, "キーワード" %>-->
+<!--<%= f.search_field :content_cont, class: "form-control" %>-->
+<!--<%= f.submit "検索" %>-->
+<!--<% end %>-->
+
+<!--<% if @dishes.any? %>-->
+<!--<%= render @dishes %> -->
+<!--<% end %>-->
+
+<!--<% if @dishes.nil? %>-->
+<!--<%= render 'dishes/dishes', dishes: @dishes %>-->
+<!--<% end %>-->
+
+

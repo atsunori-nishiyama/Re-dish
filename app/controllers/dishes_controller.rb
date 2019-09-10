@@ -2,6 +2,11 @@ class DishesController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def index
+    # @dishes = current_user.feed_dishes.order(id: :desc).page(params[:page]).per(7)
+    # @q = Dish.ransack(params[:q])
+    # @dishes = @q.result(distinct: true)
+  end
  
   def new
     @dish = Dish.new
@@ -23,6 +28,10 @@ class DishesController < ApplicationController
     @dish.destroy
     flash[:success] = '投稿を削除しました'
     redirect_back(fallback_location: root_path)
+  end
+  
+  def search
+    @dishes = Dish.search(params[:search])
   end
   
   
