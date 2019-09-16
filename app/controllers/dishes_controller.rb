@@ -3,6 +3,8 @@ class DishesController < ApplicationController
   before_action :correct_user, only: [:destroy]
   
   def index
+    @dishes = Dish.search(params[:search])
+   
     # @dishes = current_user.feed_dishes.order(id: :desc).page(params[:page]).per(7)
     # @q = Dish.ransack(params[:q])
     # @dishes = @q.result(distinct: true)
@@ -31,7 +33,7 @@ class DishesController < ApplicationController
   end
   
   def search
-    @dishes = Dish.search(params[:search])
+    # @dishes = Dish.search(params[:search])
   end
   
   

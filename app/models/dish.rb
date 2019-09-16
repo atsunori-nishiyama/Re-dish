@@ -9,10 +9,14 @@ class Dish < ApplicationRecord
   has_many :users, through: :favorites
   
   def self.search(search)
-    if search
+   
       Dish.where(['content LIKE ?', "%#{search}%"])
-    else
-      Dish.all
-    end
+    
   end
+  
+  # default_scope -> { order(created_at: :desc) }
+  # scope :search_by_keyword, -> (keyword) {
+  #   where("dishes.content Like :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
+  # }
+  
 end

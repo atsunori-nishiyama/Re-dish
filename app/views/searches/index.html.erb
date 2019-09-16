@@ -1,28 +1,43 @@
-<%= form_tag(search_path, :method => 'get') do %>
-<%= text_field_tag :search %>
-<%= submit_tag 'Search', :content => nill %>
+<P>食べたいキーワードを入力してください</P>
+<%= form_tag(searches_path, :method => 'get') do %>
+<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "キーワード検索" %>
+<%= submit_tag "検索", :content => nil %>
 <% end %>
 
-<ul>
+
+<ul class="list-unstyled">
     <% @dishes.each do |dish| %>
-    <li>
-        
+    
+    <li class="media mb-3">
+       
+       <img class="picture mr-2 rounded-circle" src="<%= dish.user.image.thumb100 %>" alt="">
+       
+        <div class="media-body">
+            <div>
+                <%= link_to dish.user.name, user_path(dish.user) %>
+                <span class="text-muted">投稿日時<%= dish.created_at %></span>
+            </div>
+            <div>
+                <p class="mb-0">
+                <%= image_tag dish.picture.url if dish.picture? %>
+                <%= simple_format(dish.content) %></p>
+            </div>
+            <div class="cotainer">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <% if current_user == dish.user %>
+                        <%= link_to "削除", dish, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                        <% end %>
+                    </div>
+                    <div class="offset-sm-1 col-sm-4">
+                        <%= render 'favorites/like_button', dish: dish %>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </li>
+    <% end %>
+    <%= paginate @dishes %>
+    
 </ul>
-
-
-<!--<%= search_form_for @q do |f| %>-->
-<!--<%= f.label :content, "キーワード" %>-->
-<!--<%= f.search_field :content_cont, class: "form-control" %>-->
-<!--<%= f.submit "検索" %>-->
-<!--<% end %>-->
-
-<!--<% if @dishes.any? %>-->
-<!--<%= render @dishes %> -->
-<!--<% end %>-->
-
-<!--<% if @dishes.nil? %>-->
-<!--<%= render 'dishes/dishes', dishes: @dishes %>-->
-<!--<% end %>-->
-
-
