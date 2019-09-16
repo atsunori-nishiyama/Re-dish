@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: redish_production
   username: redish
   password: <%= ENV['REDISH_DATABASE_PASSWORD'] %>
