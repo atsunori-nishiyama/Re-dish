@@ -1,10 +1,9 @@
+<% if logged_in? %>
 <P>食べたいキーワードを入力してください</P>
 <%= form_tag(searches_path, :method => 'get') do %>
 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "キーワード検索" %>
 <%= submit_tag "検索", :content => nil %>
 <% end %>
-
-
 <ul class="list-unstyled">
     <% @dishes.each do |dish| %>
     
@@ -39,5 +38,5 @@
     </li>
     <% end %>
     <%= paginate @dishes %>
-    
 </ul>
+<% end %>

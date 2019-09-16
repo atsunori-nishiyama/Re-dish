@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  
+  before_action :require_user_logged_in
   def index
      @dishes = Dish.search(params[:search]).page(params[:page]).per(7)
      
