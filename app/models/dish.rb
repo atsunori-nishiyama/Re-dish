@@ -19,25 +19,25 @@ class Dish < ApplicationRecord
   #   where("dishes.content Like :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
   # }
   
-  has_and_belongs_to_many :hashtags
+  # has_and_belongs_to_many :hashtags
   
-  after_create do
-    dish = Dish.find_by(id: self.id)
-    hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      dish.hashtags << tag
-    end
-  end
+  # after_create do
+  #   dish = Dish.find_by(id: self.id)
+  #   hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+  #   hashtags.uniq.map do |hashtag|
+  #     tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+  #     dish.hashtags << tag
+  #   end
+  # end
   
-  before_update do
-    dish = Dish.find_by(id: self.id)
-    dish.hashtags.clear
-    hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      dish.hashtags << tag
-    end
-  end
+  # before_update do
+  #   dish = Dish.find_by(id: self.id)
+  #   dish.hashtags.clear
+  #   hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+  #   hashtags.uniq.map do |hashtag|
+  #     tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+  #     dish.hashtags << tag
+  #   end
+  # end
   
 end
