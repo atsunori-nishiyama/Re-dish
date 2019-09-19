@@ -4,7 +4,7 @@
   <% else %>
     <%= image_tag("/assets/default.jpg") %>
   <% end %>
-  <%= f.hidden_field :image_cache %> 
+  <%#= f.hidden_field :image_cache %> 
   <%= f.file_field :image %>
   <%= f.submit 'ユーザー画像を登録する', class: 'btn btn-primary' %>
 <% end %>

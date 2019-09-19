@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @user.image.cache! unless @user.image.blank?
+    # @user.image.cache! unless @user.image.blank?
   end
 
   def update
