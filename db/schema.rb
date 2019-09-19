@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_011700) do
+ActiveRecord::Schema.define(version: 2019_09_16_200915) do
+
+  create_table "dish_hashtags", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "dish_id"
+    t.bigint "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dish_id"], name: "index_dish_hashtags_on_dish_id"
+    t.index ["hashtag_id"], name: "index_dish_hashtags_on_hashtag_id"
+  end
 
   create_table "dishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
@@ -29,6 +38,13 @@ ActiveRecord::Schema.define(version: 2019_09_08_011700) do
     t.index ["dish_id"], name: "index_favorites_on_dish_id"
     t.index ["user_id", "dish_id"], name: "index_favorites_on_user_id_and_dish_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "hashtags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_09_08_011700) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "dish_hashtags", "dishes"
+  add_foreign_key "dish_hashtags", "hashtags"
   add_foreign_key "dishes", "users"
   add_foreign_key "favorites", "dishes"
   add_foreign_key "favorites", "users"
