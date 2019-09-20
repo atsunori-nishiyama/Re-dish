@@ -1,6 +1,6 @@
-<%= form_with(model: @user, local: true) do |f| %>
-  <% if @user.image? %>
-    <%= image_tag @user.image.to_s %>
+<%= form_with(model: current_user, local: true) do |f| %>
+  <% if current_user.image? %>
+    <%= image_tag current_user.image.to_s %>
   <% else %>
     <%= image_tag("/assets/default.jpg") %>
   <% end %>

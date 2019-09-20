@@ -11,9 +11,9 @@
                 <span class="text-muted">投稿日時<%= dish.created_at %></span>
             </div>
             <div>
-                <p class="mb-0">
-                <%= image_tag dish.picture.url if dish.picture? %>
-                <%= simple_format(dish.content) %></p>
+                
+                <%= image_tag dish.picture.thumb.url if dish.picture? %>
+                <%= simple_format(dish.content) %>
             </div>
             <div class="cotainer">
                 <div class="row">

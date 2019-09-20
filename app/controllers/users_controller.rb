@@ -32,22 +32,24 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    # @user.image.cache! unless @user.image.blank?
   end
 
   def update
-    @user = User.find(params[:id])
-    if current_user == @user
-      if @user.update(user_params)
-        flash[:success] = 'ユーザー情報を編集しました。'
-        render :edit
-      else
-        flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
-        render :edit
-      end
-    else
-      redirect_to root_url
+    if params.key?(:user) == false
+      flash[:danger] = '画像が選択されてません'
+      return render :edit
     end
+    
+    if current_user.update(user_params)
+      flash[:success] = 'ユーザー情報を編集しました。'
+      redirect_to current_user
+    else
+      flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
+      render :edit
+    end
+    
+      
+      
   end
   
   def followings
