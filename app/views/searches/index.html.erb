@@ -8,7 +8,6 @@
     <% @dishes.each do |dish| %>
     
     <li class="media mb-3">
-        
        
        <div class="picture-container"><img class="picture mr-2" src="<%= dish.user.image.thumb100 %>" alt=""></div>
        
@@ -19,7 +18,7 @@
             </div>
             <div>
                 <p class="mb-0">
-                <%= image_tag dish.picture.url if dish.picture? %>
+                <%= image_tag dish.picture.thumb.url if dish.picture? %>
                 <%= simple_format(dish.content) %></p>
             </div>
             <div class="cotainer">

@@ -2,8 +2,10 @@
     <nav class="navbar navbar-expand-sm navbar-light bg-warning">
         
         <ul class="navbar-nav">
-            <li class="post nav-item"><buttom type="buttom" class="btn btn-light"><i class="fas fa-utensils"></i><%= link_to '投稿', new_dish_path %></button></li>
-            <li class="search nav-item"><button type="buttom" class="btn btn-light"><i class="fas fa-search"></i><%= link_to '検索', searches_path %></button></a></li>
+            <div class="btn-group" role="group" arila-label="Basic example">
+            <button type="button" class="btn btn-light"><i class="fas fa-utensils"></i><%= link_to '投稿', new_dish_path %></button>
+            <button type="button" class="btn btn-light"><i class="fas fa-search"></i><%= link_to '検索', searches_path %></button>
+            </div>
         </ul>
         
             <div class="title">
