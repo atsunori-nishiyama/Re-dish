@@ -1,6 +1,30 @@
+// .picture{
+//     width: 60px;
+//     height: 60px;
+//     border-radius: 50%;
+//     background-position: center center;
+//     background-image: url("img/img.png");
+//     background-size: cover;
+    
+// }
+
+.picture-container{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
 .picture{
-    max-width: 70px;
-    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .image{

@@ -54,14 +54,14 @@ class PictureUploader < CarrierWave::Uploader::Base
     1..5.megabytes
   end
   
-  process resize_to_fill: [300, 300, "Center"]
+  # process resize_to_fill: [300, 300, "Center"]
   
   process :resize_to_limit => [400, 400]
   
   process :convert => 'jpg'
   
   version :thumb do
-    process :resize_to_limit => [300, 300]
+    process :resize_to_limit => [250, 250]
   end
   
   version :thumb100 do

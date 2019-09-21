@@ -8,8 +8,9 @@
     <% @dishes.each do |dish| %>
     
     <li class="media mb-3">
+        
        
-       <img class="picture mr-2 rounded-circle" src="<%= dish.user.image.thumb100 %>" alt="">
+       <div class="picture-container"><img class="picture mr-2" src="<%= dish.user.image.thumb100 %>" alt=""></div>
        
         <div class="media-body">
             <div>
