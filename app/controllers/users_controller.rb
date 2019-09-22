@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
+  before_action :correct_user, only: [:edit]
   
   
   
@@ -80,5 +81,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
   
+  def correct_user
+    @dish = current_user.dishes.find_by(id: params[:id])
+    unless @dish
+     redirect_to root_url
+    end
+  end
   
 end
