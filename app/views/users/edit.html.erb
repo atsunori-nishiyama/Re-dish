@@ -2,7 +2,7 @@
   <% if current_user.image? %>
     <%= image_tag current_user.image.to_s %>
   <% else %>
-    <%= image_tag("/assets/default.jpg") %>
+    <%= image_tag 'default.jpg' %>
   <% end %>
   <%#= f.hidden_field :image_cache %> 
   <%= f.file_field :image %>
