@@ -1,16 +1,14 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-light bg-warning">
-        
-        <ul class="navbar-nav">
-            <div class="btn-group" role="group" arila-label="Basic example">
-            <button type="button" class="btn btn-light"><i class="fas fa-utensils"></i><%= link_to '投稿', new_dish_path %></button>
-            <button type="button" class="btn btn-light"><i class="fas fa-search"></i><%= link_to '検索', searches_path %></button>
+        <div class="navbar-nav">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-light"><i class="fas fa-utensils"></i><%= link_to '投稿', new_dish_path %></button>
+                <button type="button" class="btn btn-light"><i class="fas fa-search"></i><%= link_to '検索', searches_path %></button>
             </div>
-        </ul>
-        
-            <div class="title">
+        </div>
+        <div class="title">
             <a class="navbar-brand　ml-5 h2" href="/">Re:dish</a> 
-            </div>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,11 +23,11 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li class="doropdown-item">
+                        <li class="dropdown-item">
                             <%= link_to 'Myページ', user_path(current_user) %>
                         </li>
-                        <li class="doropdown-divider"></li>
-                        <li class="doropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+                        <li class="dropdown-divder"></li>
+                        <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
                     </ul>
                 </li>
                 <% else %>

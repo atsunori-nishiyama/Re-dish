@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :followings, :followers, :likes]
-  # before_action :correct_user, only: [:edit]
+  before_action :correct_user, only: [:edit]
   
   
   
@@ -82,9 +82,9 @@ class UsersController < ApplicationController
   end
   
   def correct_user
-    @dish = current_user.dishes.find_by(id: params[:id])
-    unless @dish
-     redirect_to root_url
+    user = User.find(params[:id])
+    if current_user != user
+     redirect_back(fallback_location: root_path)
     end
   end
   
