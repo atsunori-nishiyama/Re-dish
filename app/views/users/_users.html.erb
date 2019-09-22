@@ -4,8 +4,12 @@
     <li class="media">
        <div class="media-body">
            <div>
+                <% if user.image? %>
+                <div class="picture-container"><img class="picture mr-2" src="<%= user.image.thumb100 %>" alt=""></div>
+                <% else %>
+                <div class="picture-container"><img class="picture mr-2" <%= image_tag 'default.jpg' %> alt=""></div>
+                <% end %>
                
-               <div class="picture-container"><img class="picture mr-2" src="<%= user.image.thumb100 %>" alt=""></div>
                
            </div>
            <div>
