@@ -13,6 +13,7 @@
         </div>
     </div>
 
+<% if @dishes.length > 0 %>
 <ul class="list-unstyled">
     <% @dishes.each do |dish| %>
     
@@ -46,6 +47,12 @@
         </div>
     </li>
     <% end %>
+    </ul>
     <%= paginate @dishes %>
-</ul>
+    <% else %>
+    <P>『<%= params[:search] %>』に一致するキーワードは見つかりませんでした</P>
+    
+    <% end %>
+    
+
 <% end %>

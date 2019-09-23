@@ -1,21 +1,20 @@
 <% if logged_in? %>
+
 <h2>画像を選択してください</h2>
-<div class="row">
-    <div class="col-sm-12"> 
-        <%= form_with(model: @dish, local: true) do |f| %>
-        <div class="form-group">
-            <%= f.file_field :picture , class: 'btn btn-outline-warning' %>
-        </div>
+    <%= form_with(model: @dish, local: true) do |f| %>
+    <div class="form-group">
+        <%= f.file_field :picture , class: 'btn btn-outline-warning' %>
+    </div>
+    <div class="col-sm-12">
         <div class="form-group">
             <%= f.label :content, 'コメント内容' %>
             <%= f.text_area :content, class: 'form-control', row: 5  %>
         </div>
         <div class="grid">
-        <%= f.submit '投稿する', class: 'btn btn-warning btn-block' %>
-        <% end %>
+            <%= f.submit '投稿する', class: 'btn btn-warning btn-block' %>
+            <% end %>
         </div>
         <%= link_to '一覧に戻る', root_url %>
     </div>
-</div>
 
 <% end %>
