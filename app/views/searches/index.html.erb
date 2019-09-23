@@ -1,9 +1,18 @@
 <% if logged_in? %>
-<P>食べたいキーワードを入力してください</P>
-<%= form_tag(searches_path, :method => 'get') do %>
-<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "キーワード検索" %>
-<%= submit_tag "検索", :content => nil %>
-<% end %>
+    <P>食べたいキーワードを入力してください</P>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= form_tag(searches_path, :method => 'get') do %>
+            <div class="form-group">
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "キーワード検索" %>
+            </div>
+            <div class="grid">
+                <%= submit_tag "検索", :content => nil ,class: 'btn btn-warning' %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+
 <ul class="list-unstyled">
     <% @dishes.each do |dish| %>
     
